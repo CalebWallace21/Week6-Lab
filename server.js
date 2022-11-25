@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(express.static(`${__dirname}/public`))
 app.use(cors())
 
-app.get('http://ec2-35-90-157-100.us-west-2.compute.amazonaws.com/api/robots', (req, res) => {
+app.get('/api/robots', (req, res) => {
     try {
         res.status(200).send(botsArr)
     } catch (error) {
@@ -17,7 +17,7 @@ app.get('http://ec2-35-90-157-100.us-west-2.compute.amazonaws.com/api/robots', (
     }
 })
 
-app.get('http://ec2-35-90-157-100.us-west-2.compute.amazonaws.com/api/robots/five', (req, res) => {
+app.get('/api/robots/five', (req, res) => {
     try {
         let shuffled = shuffleArray(bots)
         let choices = shuffled.slice(0, 5)
@@ -29,7 +29,7 @@ app.get('http://ec2-35-90-157-100.us-west-2.compute.amazonaws.com/api/robots/fiv
     }
 })
 
-app.post('http://ec2-35-90-157-100.us-west-2.compute.amazonaws.com/api/duel', (req, res) => {
+app.post('/api/duel', (req, res) => {
     try {
         // getting the duos from the front end
         let {compDuo, playerDuo} = req.body
@@ -60,7 +60,7 @@ app.post('http://ec2-35-90-157-100.us-west-2.compute.amazonaws.com/api/duel', (r
     }
 })
 
-app.get('http://ec2-35-90-157-100.us-west-2.compute.amazonaws.com/api/player', (req, res) => {
+app.get('/api/player', (req, res) => {
     try {
         res.status(200).send(playerRecord)
     } catch (error) {
